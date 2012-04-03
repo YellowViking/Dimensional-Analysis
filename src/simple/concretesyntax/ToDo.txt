@@ -1,0 +1,4 @@
+1) List Attribute
+	- How to make it
+	- How to pass it around
+2) Check Expr errors of these

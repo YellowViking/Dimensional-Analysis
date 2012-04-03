@@ -1,0 +1,18 @@
+
+main () {
+  Integer x ;
+  Integer y ;
+  y = 1 ;
+  x = y ; 
+
+  Integer i ;
+  i = 1 ;
+
+  do {
+    x = x + i ;
+    y = x * y ;
+  } while (x <= 10) ;
+
+  print (y);
+  print("\n");
+}

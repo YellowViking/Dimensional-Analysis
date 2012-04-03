@@ -1,0 +1,77 @@
+<project name='simple:host' default='dist' basedir='.'>
+  <description>Build the grammar simple:host </description>
+
+  <property environment='env'/>
+  <property name='jg' location='/home/it05/vonah001/Desktop/silver-0.3.5/generated/'/>
+  <property name='sh' location='/home/it05/vonah001/Desktop/silver-0.3.5/'/>
+  <property name='bin' location='${jg}/bin'/>
+  <property name='src' location='${jg}/src'/>
+
+  <path id='lib.classpath'>
+    <fileset dir='${sh}/jars' includes='SilverRuntime.jar CopperRuntime.jar CopperCompiler.jar' />
+  </path>
+
+  <path id='src.classpath'>
+    <pathelement location='${src}' />
+  </path>
+
+  <path id='compile.classpath'>
+    <path refid='src.classpath'/>
+    <path refid='lib.classpath'/>
+  </path>
+
+  <taskdef name='copper' classname='edu.umn.cs.melt.copper.ant.CopperAntTask' classpathref='lib.classpath'/>
+
+
+  <target name='init'>
+
+    <!-- Create the time stamp -->
+    <tstamp>
+      <format property='TIME' pattern='MM/dd/yyyy hh:mm aa'/>
+    </tstamp>
+
+    <mkdir dir='${bin}'/>
+  </target>
+
+  <target name='dist' depends='grammars'>
+
+    <pathconvert refid='lib.classpath' pathsep=' ' property='man.classpath' />
+    <jar destfile='simple.host.jar' basedir='${bin}'>
+       <include name='silver/util/deque/*.class' />
+       <include name='silver/langutil/pp/*.class' />
+       <include name='silver/langutil/*.class' />
+       <include name='core/*.class' />
+       <include name='simple/abstractsyntax/*.class' />
+       <include name='simple/host/driver/*.class' />
+       <include name='simple/concretesyntax/*.class' />
+       <include name='simple/terminals/*.class' />
+       <include name='simple/host/*.class' />
+      <manifest>
+       <attribute name='Main-Class' value='simple.host.Main' />
+       <attribute name='Class-Path' value='${man.classpath}' />
+       <attribute name='Built-By' value='${user.name}' />
+       <attribute name='Implementation-Version' value='${TIME}' />
+      </manifest>
+    </jar>
+
+  </target>
+
+  <target name='grammars' depends='init, copper'>
+      <javac debug='on' classpathref='compile.classpath' srcdir='${src}' destdir='${bin}' includeantruntime='false'>
+       <include name='silver/util/deque/*.java' />
+       <include name='silver/langutil/pp/*.java' />
+       <include name='silver/langutil/*.java' />
+       <include name='core/*.java' />
+       <include name='simple/abstractsyntax/*.java' />
+       <include name='simple/host/driver/*.java' />
+       <include name='simple/concretesyntax/*.java' />
+       <include name='simple/terminals/*.java' />
+       <include name='simple/host/*.java' />
+      </javac>
+  </target>
+
+  <target name='copper'>
+  </target>
+
+
+</project>

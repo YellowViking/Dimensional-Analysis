@@ -1,0 +1,5 @@
+Dim:
+	- allows for positive and negative exponents
+	- allows for multiplication of dimensions
+	- does typechecking only for dimensions with ONE dimension in it (ie. [length], [time], [mass])
+	- does typechecking by comparing their enumerated types ([time] = 1, [length] = 2, [mass] = 3)

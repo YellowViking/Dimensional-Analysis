@@ -1,0 +1,33 @@
+
+main () {
+	Integer i;
+	Integer j;
+  
+	i = 2[length] - 3[length] + 1[length];
+
+	i = 2 [length] ;
+
+	i = 1[length*time^-2];
+	i = 3           [time^-223124];
+	i = 2.16[time];
+
+	[time^2] Integer cool;
+
+	i = 2[length] - 3[length] + 1[length]; //should pass - this is our proposed syntax tree!
+
+	i = 2[length] + 5[length] - 0[time]; //should fail
+
+	i = 2[time] + 3[length]; //should fail
+	i = 2 - 69[time]; //should fail
+	i = 25[mass] + 2; //should fail
+
+	//i = 3[(mass*time)];//can't use parenthesis in these
+
+
+	[time] Integer t;
+	[time] Integer q;
+	[mass] Integer s;
+
+	i = t + q;
+	i = t + q - s;
+}
